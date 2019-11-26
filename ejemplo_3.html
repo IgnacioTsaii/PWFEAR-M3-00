@@ -31,50 +31,36 @@
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 		<script type="text/babel">
-			class Producto extends React.Component {
+			// Componente "Saludo"
+			
+			class Saludo extends React.Component {
 
-				render(){
-					return(
-
-						<div className="card">
-							<img src={`https://lorempixel.com/480/320/${this.props.categoria}`} className="card-img-top" alt="..." />
-							<div className="card-body">
-								<h5 className="card-title">{this.props.nombre}</h5>
-								<p className="card-text">ARS {this.props.precio} | {this.props.stock} unid.</p>
-								<a href="#" className="btn btn-primary">Comprar</a>
-							</div>
-						</div>
-
-					)
+				verTipo(){
+					alert(`El saludo es de tipo ${this.props.tipo}`)
 				}
 
-			}
-			/////////////////////////////////////
-			class Catalogo extends React.Component {
 				render(){
+					
 					console.log(this)
-					return (
-						<div className="row">
 
-							<div className="col-4">
-								{
-									this.props.productos.map( (producto, index) => <Producto nombre={producto.n} stock={producto.s} precio={producto.p} categoria={producto.c} key={index} /> )
-								}
-							</div>
+					let msg = this.props.tipo == 1 ? "Hola" : "Adios"
 
-						</div>
-					)
+					return <h2 onClick={this.verTipo.bind(this)}>{msg} {this.props.nombre}</h2>
+
 				}
+
 			}
 			/////////////////////////////////////
-
-			let datos = [
-				{ n : "Cafe", s : 500, p : 89.99, c : "nature" },
-				{ n : "Jugo", s : 400, p : 38.99, c : "food" },
-				{ n : "Agua", s : 250, p : 69.99, c : "cats" }
+			
+			let app = [
+				<Saludo nombre="Lucho" tipo="0" key="A" />,
+				<Saludo nombre="Lara" tipo="1" key="B" />,
+				<Saludo nombre="Loro" tipo="1" key="C" />,
+				<Saludo nombre="Lala" tipo="0" key="D" />
 			]
 
-			ReactDOM.render(<Catalogo productos={datos} />, document.querySelector("#app"))
+			ReactDOM.render(app, document.querySelector("#app") )
+
 		</script>
 	</body>
 </html>

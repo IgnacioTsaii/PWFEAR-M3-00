@@ -1,0 +1,23 @@
+{
+  "name": "pwfear-m3-00",
+  "version": "0.0.1",
+  "description": "React App con Create React App :P",
+  "main": "index.js",
+  "dependencies": {
+    "create-react-app": "^3.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eant/PWFEAR-M3-00.git"
+  },
+  "author": "El que no debe ser nombrado x_x",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eant/PWFEAR-M3-00/issues"
+  },
+  "homepage": "https://github.com/eant/PWFEAR-M3-00#readme"
+}
