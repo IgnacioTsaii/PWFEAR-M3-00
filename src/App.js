@@ -5,7 +5,8 @@ import Logo from './components/Logo'
 import Menu from './components/Menu'
 import Mapa from './components/Mapa'
 import Video from './components/Video'
-import Producto from './components/Producto'
+//import Producto from './components/Producto'
+import Gondola from './components/Gondola'
 
 const links = [
   {
@@ -25,10 +26,24 @@ const links = [
   }
 ]
 
-{/* DESAFIO IV: */}
-{/* Traer los datos de la API desde App y usarlos para <Producto /> */}
-
 class App extends React.Component {
+
+  constructor(){
+    super()
+    this.state = {
+      isLoaded : false
+    }
+  }
+
+  componentDidMount(){
+    /* DESAFIO IV: */
+    /* Traer los datos de la API desde App y usarlos para <Producto /> */
+    //fetch( OBTENCION ).then( CONVERSION ).then( UTILIZACION )
+    fetch("https://api.myjson.com/bins/1giaf3").then( rta => rta.json() ).then( data => {
+      this.setState({ productos : data, isLoaded : true })
+    })
+  }
+
   render(){
     return (
       <div className="App">
@@ -44,7 +59,9 @@ class App extends React.Component {
           {/* DESAFIO III: */}
           <Video id="TobNCFMK_bs" play="no" />
 
-          <Producto />
+          {/* DESAFIO V: */}
+          {/* Crear los X productos segun cant. de items + asignacion de datos al componente Producto */}
+          { !this.state.isLoaded ? <p>Cargandoooo... wooo...</p> : <Gondola productos={this.state.productos} /> }
 
         </header>
       </div>
