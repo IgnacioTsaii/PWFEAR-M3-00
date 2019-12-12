@@ -1,12 +1,18 @@
 import React from 'react'
 import './App.css'
 
+//Componentes
 import Logo from './components/Logo'
 import Menu from './components/Menu'
 import Mapa from './components/Mapa'
 import Video from './components/Video'
 //import Producto from './components/Producto'
 import Gondola from './components/Gondola'
+
+//Helpers
+import AJAX from './helpers/AJAX'
+
+const api = new AJAX()
 
 const links = [
   {
@@ -39,9 +45,21 @@ class App extends React.Component {
     /* DESAFIO IV: */
     /* Traer los datos de la API desde App y usarlos para <Producto /> */
     //fetch( OBTENCION ).then( CONVERSION ).then( UTILIZACION )
-    fetch("https://api.myjson.com/bins/1giaf3").then( rta => rta.json() ).then( data => {
+
+    //Opcion 1: metodo then()
+    api.getData("https://api.myjson.com/bins/1giaf3").then( data => {
       this.setState({ productos : data, isLoaded : true })
     })
+
+    //Opcion 2: Funcion Anonima Asincronica (FAA) y algo más (comming soon...)
+    /*
+    let data = function(){
+      return Promise.resolve( api.getData("https://api.myjson.com/bins/1giaf3") )
+    }
+
+    console.log( data() )
+    */
+
   }
 
   render(){
